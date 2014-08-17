@@ -18,7 +18,7 @@ activity.data.raw <- read.csv("activity.csv")
 
 Process the raw data file for analysis performed below.  
 
-- Convert date variable to date classs  
+- Convert date variable to date class  
 - Add variable to identify the day of the week (Mon, Tue, etc.)  
 - Add variable to identify the type of day (Weekday, Weekend)   
 
@@ -48,19 +48,24 @@ hist(steps.date.total$Total.Steps, breaks = 20, main = "Frequency of Mean Total 
 
 Find mean and median number of steps using the mean & median functions.  
 
-- Mean total number of steps taken per day is
-```{r}
+- Formula for mean total number of steps taken per day:  
+```{r results = "hide"}
 mean(steps.date.total$Total.Steps, na.rm = TRUE) 
 ```
 
-- Median total number of steps taken per day is
-```{r}
+    Mean total number of steps taken per day is `r mean(steps.date.total$Total.Steps, na.rm = TRUE)`
+
+- Formula for median total number of steps taken per day:
+```{r results = "hide"}
 median(steps.date.total$Total.Steps, na.rm = TRUE)
 ```
 
+    Median total number of steps taken per day is `r median(steps.date.total$Total.Steps, na.rm = TRUE)`
+
+
 ### What is the average daily activity pattern?
 
-Create a line plot of average steps taken versus interval. Aggregate the dat by the interval variable and apply the mean funtion to the steps variable.
+Create a line plot of average steps taken versus interval. Aggregate the data by the interval variable and apply the mean function to the steps variable.
 
 ```{r}
 steps.interval.avg <-
@@ -74,7 +79,7 @@ plot(steps.interval.avg$Interval,steps.interval.avg$Avg.Steps, type = "l",
     ylab = "Average Steps per Interval")
 ```
 
-The 5-minute interval, on average over all of the days in the dataset, containing the maximum number of steps can be found by using the which.max function:
+The 5-minute interval, on average over all of the days in the data set, containing the maximum number of steps can be found by using the which.max function:
 
 ```{r}
 interval.maxAvgSteps <- steps.interval.avg[which.max(steps.interval.avg$Avg.Steps),]
@@ -84,14 +89,14 @@ interval.maxAvgSteps
 
 ### Imputing missing values
 
-Find this value by using thee is.na function.  
-The number of missing values in the steps variable is
-```{r}
-missing.data.total <- sum(is.na(activity.data.raw$steps))
-missing.data.total
+Find this value by using the is.na function:  
+```{r results = "hide"}
+sum(is.na(activity.data.raw$steps))
 ```
 
-Use the average number of steps taken for any individul interval (taken over all days in the dataset) to replace a NA value for for the same interval.
+The number of missing values in the steps variable is `r sum(is.na(activity.data.raw$steps))`
+
+Use the average number of steps taken for any individual interval (taken over all days in the data set) to replace a NA value for for the same interval.
 
 ```{r}
 activity.data.adjusted <- activity.data
@@ -103,7 +108,7 @@ activity.data.adjusted$steps <- temp.03
 
 ```
 
-Using the adjusted dataset, create a histogram of the total number of steps taken each day.
+Using the adjusted data set, create a histogram of the total number of steps taken each day.
 
 ```{r}
 adjustedSteps.date.total <-
@@ -117,32 +122,32 @@ hist(adjustedSteps.date.total$Total.Steps, breaks = 20,
 ```
 
 Find mean and median number of steps using the mean & median functions.  
-Adjusted dataset  
+For the Adjusted data set  
 
-- Mean total number of steps taken per day is
-```{r}
+- Formula for mean total number of steps taken per day:  
+```{r results = "hide"}
 mean(steps.date.total$Total.Steps, na.rm = TRUE)
 ```
 
-- Meadian total number of steps taken per day is
-```{r}
+    Mean total number of steps taken per day - adjusted data set - is `r mean(steps.date.total$Total.Steps, na.rm = TRUE)`
+
+- Formula for median total number of steps taken per day:
+```{r results = "hide"}
 median(steps.date.total$Total.Steps, na.rm = TRUE)
 ```
 
-The values for the mean and median estimated for the adjusted dataset (NAs replaced) do not differ from the estimates for the ofiginal dataset:  
-Original dataset  
+    Median total number of steps taken per day - adjusted data set - is `r median(steps.date.total$Total.Steps, na.rm = TRUE)`
 
-- Mean total number of steps taken per day is
-```{r}
-mean(steps.date.total$Total.Steps, na.rm = TRUE)
-```
-- Mean total number of steps taken per day is
-```{r}
-median(steps.date.total$Total.Steps, na.rm = TRUE)
-```
+The values for the mean and median estimated for the adjusted data set (NAs replaced) do not differ from the estimates for the original data set:  
+Original data set  
+
+- Mean total number of steps taken per day - original data set - is `r mean(steps.date.total$Total.Steps, na.rm = TRUE)`
+
+- Median total number of steps taken per day - original data set - is `r median(steps.date.total$Total.Steps, na.rm = TRUE)`
+
 
 ### Are there differences in activity patterns between weekdays and weekends?
-Utilize the day.type variable added to thje dataset at the beginning of this assignment to seperate the data by weekday and weekend day types.
+Utilize the day.type variable added to the data set at the beginning of this assignment to separate the data by weekday and weekend day types.
 
 Create a panel plot of average number of steps taken versus 5-minute interval using the ggplot2 package.
 
@@ -169,8 +174,5 @@ g <- g + theme(axis.text = element_text(size = 12)) +
 plot(g)
 
 ```
-
-
-
 
 
