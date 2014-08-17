@@ -126,17 +126,17 @@ For the Adjusted data set
 
 - Formula for mean total number of steps taken per day:  
 ```{r results = "hide"}
-mean(steps.date.total$Total.Steps, na.rm = TRUE)
+mean(adjustedSteps.date.total$Total.Steps, na.rm = TRUE)
 ```
 
-    Mean total number of steps taken per day - adjusted data set - is `r mean(steps.date.total$Total.Steps, na.rm = TRUE)`
+    Mean total number of steps taken per day - adjusted data set - is `r mean(adjustedSteps.date.total$Total.Steps, na.rm = TRUE)`
 
 - Formula for median total number of steps taken per day:
 ```{r results = "hide"}
-median(steps.date.total$Total.Steps, na.rm = TRUE)
+median(adjustedSteps.date.total$Total.Steps, na.rm = TRUE)
 ```
 
-    Median total number of steps taken per day - adjusted data set - is `r median(steps.date.total$Total.Steps, na.rm = TRUE)`
+    Median total number of steps taken per day - adjusted data set - is `r median(adjustedSteps.date.total$Total.Steps, na.rm = TRUE)`
 
 The values for the mean and median estimated for the adjusted data set (NAs replaced) do not differ from the estimates for the original data set:  
 Original data set  
